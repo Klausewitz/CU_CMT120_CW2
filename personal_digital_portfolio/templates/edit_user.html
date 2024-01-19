@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+<!-- title -->
+{% block title %}
+    {% if edit %}
+        change password
+    {% else %}
+        add user
+    {% endif %}    
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+    <!-- submit form for user -->
+    <div class="container-fluid px-4 py-4">
+        <form method="POST" class="form-signin">
+            {{ form.hidden_tag() }}
+
+            <!-- change password -->
+            {% if edit %}
+                <h1 class="h3 mb-3 font-weight-normal">
+                    change password
+                </h1>
+                <br>
+                {{ form.old_password.label() }}
+                {{ form.old_password(class="form-control", placeholder='old password') }}
+                <br>
+                {{ form.password.label() }}
+                {{ form.password(class="form-control", placeholder='new password') }}
+                <br>
+                {{ form.cfm_password.label() }}
+                {{ form.cfm_password(class="form-control", placeholder='confirm password') }}
+                <br>
+                {{ form.submit(class='btn btn-lg btn-block btn-primary') }}
+            
+            <!-- add new user account -->
+            {% else %}   
+                <h1 class="h3 mb-3 font-weight-normal">
+                    add user
+                </h1>          
+                <br>
+                {{ form.username.label() }}
+                {{ form.username(class='form-control', placeholder='username') }}
+                <br>
+                {{ form.password.label() }}
+                {{ form.password(class="form-control", placeholder='password') }}
+                <br>
+                {{ form.submit(class='btn btn-lg btn-block btn-primary') }}
+            {% endif %}
+
+        </form>
+    </div>
+    
+{% endblock %}

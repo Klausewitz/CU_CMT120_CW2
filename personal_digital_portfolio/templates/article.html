@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+<!-- title -->
+{% block title %}
+    article: {{ article.title }}
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+<br>
+<a class="btn btn-primary" href="{{ url_for('index') }}" role="button" style="background-color: #DAE1DE; border: 0px; color: black; font-weight: 700;"> < back </a>
+<br>
+<br>
+<h1>
+    {{ article.title }}
+</h1>
+<p class="badge text-bg-secondary">
+    Created at: {{ article.created }}
+</p>
+<br>
+<p>
+    {{ article.content }}
+</p>
+
+{% endblock %}

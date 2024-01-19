@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+<!-- title -->
+{% block title %}
+    {% if edit %}
+        edit article
+    {% else %}
+        new article
+    {% endif %}    
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+    <!-- submit form for article -->
+    <div class="container-fluid px-4 py-4">
+        <form method="POST" class="form-signin">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal">
+                {% if edit %}
+                    Edit article
+                {% else %}
+                    New article
+                {% endif %}  
+            </h1>
+            <br>
+            {{ form.title.label() }}
+            {{ form.title(class='form-control', placeholder='Title') }}
+            <br>
+            {{ form.content.label() }}
+            {{ form.content(class="form-control content_height", placeholder='Article', style='height: 500px') }}
+            <br>
+            {{ form.submit(class='btn btn-lg btn-block btn-primary') }}
+        </form>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+<!-- title -->
+{% block title %}
+    delete your account
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+<br>
+<a class="btn btn-primary" href="{{ url_for('dashboard') }}" role="button" style="background-color: #DAE1DE; border: 0px; color: black; font-weight: 700;">
+    < back
+</a>
+<br>
+<br>
+
+<form method="POST">
+    {{ form.csrf_token() }}
+    <div class="modal-body">
+        <h4>The current account will be permanently deleted</h4>
+    </div>
+    <br>
+    <a class='btn btn-primary' href="{{ url_for('dashboard') }}" role="button">
+        Cancel
+    </a>
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+bcrypt == 3.2.0
+bootstrap == 5.3.2  // has been downloaded in /static/plugins/Bootstrap_5.3.2/
+Flask == 2.2.5
+flask-login == 0.6.2
+flask-SQLAlchemy == 3.1.1
+Flask-WTF == 1.0.1
+jquary == 3.7.1     // has been downloaded in /static/plugins/jquery_3.7.1/
+mysqlclient == 2.2.1
+SQLAlchemy == 2.0.25
+
+        

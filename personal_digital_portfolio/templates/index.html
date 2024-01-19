@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+<!-- title -->
+{% block title %}
+    Welcome to my digital portfolios
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+<div  class="container-xl">
+    {% for article in articles %}
+    {% if current_user.is_authenticated %}
+        {% include 'popup/del_article_popup.html' %}
+    {% endif %}
+    <div class="card mt-4" style="background-color: #DAE1DE">
+
+        <div class="card-header">
+            <ul class="nav">
+                
+                <!-- article title -->
+                <li class="nav-item me-auto">
+                    <a class="btn fs-5 fw-bold" href="article/{{ article.id }}">{{ article.title }}</a>
+                </li>
+
+                {% if current_user.is_authenticated %}
+
+                <!-- edit article -->
+                <li class="nav-item px-1">
+                    <small class="text-body-secondary">
+                        <a class="btn" href="/edit_article/{{ article.id }}">edit</a>
+                    </small>
+                </li>
+
+                <!-- delete article -->
+                <li class="nav-item px-1">
+                    <small class="text-body-secondary">
+                        <button class="btn" data-bs-toggle="modal" data-bs-target="#Modal-DeleteConfirm-{{ article.id }}">delete</button>
+                    </small>
+                </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+
+        <!-- article content -->
+        <div class="card-body">
+            <p class="card-text">
+                <a class="btn fs-6" href="article/{{ article.id }}">{{ article.content }}</a>
+            </p>
+
+            <!-- article published time -->
+            <ul class="nav">
+                <li class="nav-item ms-auto">
+                    <small class="text-body-secondary">Published: {{ article.created }}</small>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
